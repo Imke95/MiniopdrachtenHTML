@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <title>
+        Project titel
+    </title>
+
+    <style>
+        h1 {
+            color: green;
+        }
+
+        p {
+            color: yellowgreen;
+        }
+        
+        .content {
+            max-width: 500px;
+            margin: auto;
+        }
+    </style>
+
+
+</head>
+
+<body style="background-color: black;" class="content">
+    
+    <p> miniopdracht 1 </p>
+    <input id="input1Id" type="text" /> 
+    <p></p>
+    <button onclick="getMsg()"> Submit!</button>
+    <p id="buttonId" >  </p>
+
+    <p> miniopdracht 2 </p>
+    <input id="input2Id" type="text" /> 
+    <p></p>
+    <button onclick="containsE()"> Submit word!</button>
+    <p id="button2Id" >  </p>
+
+    <p> miniopdracht 3 </p>
+    <input id="input3Id" type="text" /> 
+    <input id="input4Id" type="text" />
+    <p></p>
+    <button onclick="countE()"> Submit word!</button>
+    <p id="button3Id" >  </p>
+
+    <p> miniopdracht 4 & 5 </p>
+    <button id="buttonA" onclick="storeClick(this.id)"> A </button>
+    <button id="buttonB" onclick="storeClick(this.id)"> B </button>
+    <button id="buttonC" onclick="storeClick(this.id)"> C </button>
+    <button id="buttonD" onclick="storeClick(this.id)"> D </button>
+    <div id="divOutput">
+    <p id="clickOutput"> </p>
+    </div>
+
+    <p> miniopdracht 6 </p>
+    <p> Het huidige seizoen is: 
+        <img id="seizoenImg"
+            src="https://magazine.eo.nl/wp-content/uploads/2018/08/csm_zomer-luisteren-header_329143f71a.jpg" style="width:500px; height: 250px;" />
+    </p>
+    <button id="seizoenButton" onclick="changeImg(4, 'buttonAFBA')"> Volgende seizoen!</button>
+    <p id="aantalJaar" > Er is 0 jaar voorbij. </p>
+
+    <p> miniopdracht 7  </p>
+    <div>
+    <img id="AFBA"
+            src="https://oracp.memberclicks.net/assets/2018/FallConf2018/afbalogo2.jpg" style="width:500px; height: 250px;" />
+    <img id="AFBB"
+            src="https://studl.com/assets/uploads/logo_ecoles/2776/logo-afbb1_large.jpg" style="width:500px; height: 250px;" />
+    </div>
+
+    <button id='buttonAFBA' onclick="addToSeasons(this.id)"> KNA </button>
+    <button id='buttonAFBB' onclick="addToSeasons(this.id)"> KNB </button>
+    <button id="buttonKNC" onclick="compareImages()"> KNC </button>
+
+    <p> miniopdracht 8 </p>
+    <div>
+        <img id="seizoenImg-8"
+                src="https://magazine.eo.nl/wp-content/uploads/2018/08/csm_zomer-luisteren-header_329143f71a.jpg" style="width:500px; height: 250px;" onclick="changeSeasonAndAddLambs()"/>
+        <img id="lammetjesImg"
+                src="https://th.bing.com/th/id/R.aa5224c06c42ee3780ed75d9dc87e8a0?rik=4KXyilB66BBx4A&pid=ImgRaw&r=0" style="width:500px; height: 250px;" />
+        </div>
+</body>
+
+</html>
+
+<script>
+    var demoElementen = document.getElementsByClassName('demo');
+
+    console.log('Dit is mijn testbericht.')
+
+    function getMsg(){
+        if(document.getElementById("input1Id").value == "hallo"){
+            document.getElementById("buttonId").innerHTML = "Welkom!"
+        }
+        if(document.getElementById("input1Id").value == "doei"){
+            document.getElementById("buttonId").innerHTML = "Tot de volgende keer!"
+        }
+        
+    }
+
+    function containsE(){
+        let word = input2Id.value;
+        count = 0;
+        for (let i = 0; i < word.length; i++){
+            if(word.charAt(i) == 'e' | word.charAt(i) == 'E'){
+                count++;
+            }
+        }
+        if(count > 0){
+            alert("Er zit een e in je woord!");
+        } 
+        
+    }
+
+    function countE(){
+        let word = input3Id.value;
+        let character = (input4Id.value).charAt(0);
+        //let characterUC = (input4Id.value).toUpperCase().charAt(0);
+        let characterUC = character.toUpperCase();
+        count = 0;
+        for (let i = 0; i < word.length; i++){
+            if(word.charAt(i) == character | word.charAt(i) == characterUC){
+                count++;
+            }
+        }
+        if(count == 0){
+            alert("Er zit geen " + character +  " in je woord!");
+        } 
+        if(count == 1){
+            alert("Er zit één " + character +  " in je woord!");
+        }
+        else{
+            alert("Er zitten " + count + " " + character +  "'s in je woord!")
+        }
+        
+    }
+
+        var clickarray = [];
+        countA = 0;
+        countB = 0;
+        countC = 0;
+        countD = 0;
+        function storeClick(buttonId){
+            
+            if (buttonId == "buttonA"){
+                clickarray.push("U heeft op knop A geklikt.")
+                if (countA >0){
+                    alert("U heeft al " + countA + " keer eerder op A geklikt.");
+                }
+                countA++;
+            }
+            if (buttonId == "buttonB"){
+                clickarray.push("U heeft op knop B geklikt.")
+                if (countB >0){
+                    alert("U heeft al " + countB + " keer eerder op B geklikt.");
+                }
+                countB++;
+            }
+            if (buttonId == "buttonC"){
+                clickarray.push("U heeft op knop C geklikt.")
+                if (countC> 0){
+                    alert("U heeft al " + countC + " keer eerder op C geklikt.");
+                }
+                countC++;
+            }
+            if (buttonId == "buttonD"){
+                clickarray.push("U heeft op knop D geklikt.")
+                if (countD >0){
+                    alert("U heeft al " + countD + " keer eerder op D geklikt.");
+                }
+                countD++;
+            }
+            document.getElementById("clickOutput").innerHTML = "";
+            for (let i = 0; i < clickarray.length; i++){
+                document.getElementById("clickOutput").innerHTML += clickarray[i].toString() + "<br>";
+            }
+            //document.getElementById("clickOutput").innerHTML = clickarray.toString();
+        }
+    
+    clickCount = 0;
+    function changeImg(num, altImgId){
+        if(clickCount % num == 0){
+            document.getElementById("seizoenImg").src="https://magazine.eo.nl/wp-content/uploads/2018/08/csm_zomer-luisteren-header_329143f71a.jpg";
+        }
+        if(clickCount % num == 1){
+            document.getElementById("seizoenImg").src="https://www.scientias.nl/wp-content/uploads/2019/09/autumn_forest_1569222828.jpg";
+        }
+        if(clickCount % num == 2){
+            document.getElementById("seizoenImg").src="https://th.bing.com/th/id/R.141b53550614d37d8e053fa1d0becd44?rik=6wp75JfwDw6Uwg&riu=http%3a%2f%2fwallup.net%2fwp-content%2fuploads%2f2016%2f04%2f06%2f345710-landscape-winter-forest.jpg&ehk=lcUPft3gmEQqpgb324CQYRmCUExs38fRlD0MPUfJ%2fI8%3d&risl=&pid=ImgRaw&r=0";
+        }
+        if(clickCount % num == 3){
+            document.getElementById("seizoenImg").src="https://images0.persgroep.net/rcs/Rob7NvYN2yNRLFzc8WjEfP4iC5U/diocontent/131186210/_crop/0/811/1580/893/_fitwidth/763?appId=93a17a8fd81db0de025c8abd1cca1279&quality=0.8";
+        }
+        if(clickCount % num == 4){
+            if(altImgId == 'buttonAFBA'){
+                document.getElementById("seizoenImg").src="https://oracp.memberclicks.net/assets/2018/FallConf2018/afbalogo2.jpg";
+            }
+            if(altImgId == 'buttonAFBB'){
+                document.getElementById("seizoenImg").src="https://studl.com/assets/uploads/logo_ecoles/2776/logo-afbb1_large.jpg";
+            }
+        }
+        if (clickCount < (2 * num)){
+            document.getElementById("aantalJaar").innerHTML = "Er is " + Math.floor(clickCount / num) + " jaar voorbij."
+        } else{
+            document.getElementById("aantalJaar").innerHTML = "Er zijn " + Math.floor(clickCount / num) + " jaren voorbij."
+        }
+        clickCount++;
+        
+    }
+
+    function addToSeasons(buttonId){
+        if(buttonId == 'buttonAFBA'){
+            //document.getElementById("seizoenImg").src="https://oracp.memberclicks.net/assets/2018/FallConf2018/afbalogo2.jpg";
+            document.getElementById("seizoenButton").onclick=function(){changeImg(5, 'buttonAFBA')};
+        }
+        if(buttonId == 'buttonAFBB'){
+            //document.getElementById("seizoenImg").src="https://studl.com/assets/uploads/logo_ecoles/2776/logo-afbb1_large.jpg";
+            document.getElementById("seizoenButton").onclick=function(){changeImg(5, 'buttonAFBB')};
+        }
+    }
+
+    function compareImages(){
+        if(document.getElementById("seizoenImg").src == document.getElementById("AFBA").src){
+            console.log("HETZELFDE");
+        } else{
+            if (document.getElementById("seizoenImg").src == document.getElementById("AFBB").src){
+                console.log("HETZELFDE");
+            } else{
+                console.log("NIET HETZELFDE")
+            }
+        }
+
+    }
+
+    clickCount8 = 0;
+    function changeSeasonAndAddLambs(){
+        if(clickCount8 % 4 == 0){
+            document.getElementById("seizoenImg-8").src="https://magazine.eo.nl/wp-content/uploads/2018/08/csm_zomer-luisteren-header_329143f71a.jpg";
+            document.getElementById("lammetjesImg").src="https://th.bing.com/th/id/R.aa5224c06c42ee3780ed75d9dc87e8a0?rik=4KXyilB66BBx4A&pid=ImgRaw&r=0";
+        }
+        if(clickCount8 % 4 == 1){
+            document.getElementById("seizoenImg-8").src="https://www.scientias.nl/wp-content/uploads/2019/09/autumn_forest_1569222828.jpg";
+        }
+        if(clickCount8 % 4 == 2){
+            document.getElementById("seizoenImg-8").src="https://th.bing.com/th/id/R.141b53550614d37d8e053fa1d0becd44?rik=6wp75JfwDw6Uwg&riu=http%3a%2f%2fwallup.net%2fwp-content%2fuploads%2f2016%2f04%2f06%2f345710-landscape-winter-forest.jpg&ehk=lcUPft3gmEQqpgb324CQYRmCUExs38fRlD0MPUfJ%2fI8%3d&risl=&pid=ImgRaw&r=0";
+        }
+        if(clickCount8 % 4 == 3){
+            document.getElementById("seizoenImg-8").src="https://images0.persgroep.net/rcs/Rob7NvYN2yNRLFzc8WjEfP4iC5U/diocontent/131186210/_crop/0/811/1580/893/_fitwidth/763?appId=93a17a8fd81db0de025c8abd1cca1279&quality=0.8";
+            document.getElementById("lammetjesImg").src="https://th.bing.com/th/id/R.356e07f5a6cec4162b837ce4aa780f1f?rik=Enky4xdaaAClmA&pid=ImgRaw&r=0";
+        }
+        clickCount8++;
+    }
+
+</script>
